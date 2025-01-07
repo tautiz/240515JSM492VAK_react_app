@@ -1,0 +1,198 @@
+/* Pagrindinės spalvos ir kintamieji */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #3b82f6;
+    --accent-color: #60a5fa;
+    --background-color: #f8fafc;
+    --text-color: #1e293b;
+    --header-height: 4rem;
+    --sidebar-width: 250px;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Bendri stiliai */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Responsive container */
+.App {
+    display: grid;
+    grid-template-areas: 
+        "nav nav"
+        "sidebar main";
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
+/* Header stiliai */
+.App-header {
+    grid-area: main;
+    padding: 1rem;
+}
+
+/* Navigacija */
+.meniu {
+    grid-area: nav;
+    background-color: var(--primary-color);
+    padding: 1rem;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+.meniu ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.meniu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed);
+}
+
+.meniu a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Šoninė juosta */
+.sonineJuosta {
+    grid-column: 1 / 2;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
+    height: 100vh;
+    position: fixed;
+    width: var(--sidebar-width);
+}
+
+/* Pagrindinė turinio dalis */
+main {
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Komponentų stiliai */
+.aboutMe,
+.greeting,
+.contactCard,
+.hobbies,
+.counter,
+.userList {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-speed);
+}
+
+.contactCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contactCard:hover {
+    transform: translateY(-2px);
+}
+
+/* Counter komponentas */
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.counter button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.counter button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* UserList komponentas */
+.userList {
+    display: grid;
+    gap: 1rem;
+}
+
+.userList-item {
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 2rem;
+    background-color: var(--text-color);
+    color: white;
+}
+
+/* Responsive dizainas */
+@media (max-width: 768px) {
+    .App {
+        grid-template-areas: 
+            "nav"
+            "main";
+        grid-template-columns: 1fr;
+    }
+
+    .sonineJuosta {
+        display: none;
+    }
+
+    .meniu ul {
+        flex-direction: column;
+    }
+}
+
+/* Tamsus režimas */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1a1a;
+        --text-color: #ffffff;
+    }
+
+    .aboutMe,
+    .greeting,
+    .contactCard,
+    .hobbies,
+    .counter,
+    .userList {
+        background-color: #2d2d2d;
+    }
+}
