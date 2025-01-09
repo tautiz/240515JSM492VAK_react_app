@@ -12,6 +12,7 @@ import Hr from './components/Hr';
 import { ButtonClick, InputChange, FormSubmit, InlineEvents, MultipleEvents } from './components/events';
 import DataTable from './components/DataTable';
 import UserDashboard from './components/UserDashboard';
+import Clock from './components/Clock';
 
 function App() {
   const users = [
@@ -69,6 +70,9 @@ function App() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <UserDashboard />
+              <div className='card'>
+                <Clock/>
+              </div>
             </div>
           </main>
         </div>
