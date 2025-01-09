@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import Clock from './Clock';
 
 function Meniu({ data }) {
   return (
@@ -12,6 +13,7 @@ function Meniu({ data }) {
           {item.pavadinimas}
         </a>
       ))}
+      <Clock/>
     </nav>
   );
 }

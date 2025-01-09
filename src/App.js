@@ -37,9 +37,27 @@ function App() {
             <SonineJuosta />
           </aside>
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
-            <AboutMe />
-            <Greeting />
-            
+
+            <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <UserDashboard />
+              <div className='card'>
+                <Clock/>
+              </div>
+            </div>
+
+            <Hr text="Įvykių Pavyzdžiai" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <ButtonClick />
+              <InputChange />
+              <FormSubmit />
+              <InlineEvents />
+              <MultipleEvents />
+              <DataTable data={users} filterBy="name,age,phone" />
+            </div>
+
             <Hr text="Darbas su Komponentais" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -54,26 +72,11 @@ function App() {
               <div className="card"><UserList users={users.slice(0, 3)} /></div>
             </div>
 
-            <Hr text="Įvykių Pavyzdžiai" />
+            <Hr text="Intro" />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-              <ButtonClick />
-              <InputChange />
-              <FormSubmit />
-              <InlineEvents />
-              <MultipleEvents />
-              <DataTable data={users} filterBy="name,age,phone" />
-            </div>
-
-
-            <Hr text="Advanced Salygos" />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-              <UserDashboard />
-              <div className='card'>
-                <Clock/>
-              </div>
-            </div>
+            <AboutMe />
+            <Greeting />
+            
           </main>
         </div>
       </div>
