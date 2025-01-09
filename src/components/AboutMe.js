@@ -25,7 +25,7 @@ function AboutMe() {
                     placeholder="Iveskite savo varda" 
                     value={vardas} 
                     onChange={(eventas) => keistiVarda(eventas.target.value)}
-                    className="input"
+                    className="input mr-5"
             />
             <input type="text" 
                     placeholder="Iveskite savo Paverde" 
