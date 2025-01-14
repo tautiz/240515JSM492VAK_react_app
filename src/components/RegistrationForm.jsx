@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Form from './Forms/Form';
 import Input from './Forms/Input';
+import Button from './Forms/Button';
 
 // ++++++++++++++++++ KONTROLIUOJAMA FORMA +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -21,35 +22,28 @@ function RegistrationForm() {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <div>
-                <Input
-                    type="text"
-                    name="name"
-                    label="Vardas"
-                    value={formData.name}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <Input
-                    type="email"
-                    name="email"
-                    label="El. Pastas"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <Input
-                    type="password"
-                    name="password"
-                    label="Slaptazodis"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-            </div>
-            <button type="submit">Register</button>
+        <Form onSubmit={handleSubmit} id="ManoForma">
+            <Input
+                name="name"
+                label={'Vardas'}
+                value={formData.name}
+                onChange={handleChange}
+            />
+            <Input
+                type="text"
+                name="email"
+                label={'El. Pastas'}
+                value={formData.email}
+                onChange={handleChange}
+            />
+            <Input
+                type="password"
+                name="password"
+                label={'Slaptazodis'}
+                value={formData.password}
+                onChange={handleChange}
+            />
+            <Button type="submit">Register</Button>
         </Form>
     );
 }
@@ -96,14 +90,26 @@ export { UncontrolledForm };
 function RegistrationWithValidation() {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const [errors, setErrors] = useState({});
+    const [successMessage, setSuccessMessage] = useState('');
 
     // Funkcija skirta validuoti visa forma ir grazinti klaidu objekta
-    const validate = () => {
+    const validateALLFields = () => {
         const newErrors = {};
 
-        if (!formData.name) newErrors.name = 'Privalomas vardo laukelis';
-        if (!formData.email.includes('@')) newErrors.email = 'Netaisyklingas el. pasto adresas.';
-        if (formData.password.length < 6) newErrors.password = 'Slaptazodis turi buti bent 6 simboliu.';
+        Object.keys(formData).map((formElement) => { 
+            
+            if (formElement === 'email' && !formData[formElement].includes('@')) {
+                newErrors[formElement] = 'Netaisyklingas el. pasto adresas.';
+            }
+            
+            if (formElement === 'password' && formData[formElement].length < 6) {
+                newErrors[formElement] = 'Slaptazodis turi buti bent 6 simboliu.';
+            }
+            
+            if (!formData[formElement]) {
+                newErrors[formElement] = `Privalomas ${formElement} laukelis`;
+            }
+        });
 
         return newErrors;
     };
@@ -112,13 +118,14 @@ function RegistrationWithValidation() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newErrors = validate(); // Kvieciama validavimo funkcija ir jos rezultatas saugomas newErrors konstantoje
+        const newErrors = validateALLFields(); // Kvieciama validavimo funkcija ir jos rezultatas saugomas newErrors konstantoje
 
         if (Object.keys(newErrors).length > 0) { // Jei newErrors objektas turi bent viena klaida
             setErrors(newErrors);
         } else {
             // Tvarkingu duomenu atveju, isvedam juos i narsykles konsole
             console.log('Submitted Data:', formData);
+            setSuccessMessage('Registracija sekminga!\n' + JSON.stringify(formData));
             setErrors({});
         }
     };
@@ -126,41 +133,37 @@ function RegistrationWithValidation() {
     // Handleris skirtas stebeti elementu duomenu pasikeitimams
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        setErrors({...errors, [e.target.name]: ''});
     };
 
     return (
         <Form onSubmit={handleSubmit}>
-            <div>
-                <label>Name:</label>
-                <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                />
-                {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
-            </div>
-            <div>
-                <label>Email:</label>
-                <input
-                    type="text"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
-                {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
-            </div>
-            <div>
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-                {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
-            </div>
-            <button type="submit">Register</button>
+            <Input
+                type="text"
+                name="name"
+                label={'Vardas'}
+                value={formData.name}
+                onChange={handleChange}
+                error={errors.name}
+            />
+            <Input
+                type="text"
+                name="email"
+                label={'El. Pastas'}
+                value={formData.email}
+                onChange={handleChange}
+                error={errors.email}
+            />
+            <Input
+                type="password"
+                name="password"
+                label={'Slaptazodis'}
+                value={formData.password}
+                onChange={handleChange}
+                error={errors.password}
+            />
+            <Button type="submit">Register</Button>
+            {successMessage && <p>{successMessage}</p>}
         </Form>
     );
 }

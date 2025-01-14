@@ -39,15 +39,18 @@ function App() {
           </aside>
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
 
-          <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
+          <Hr text="Formos pavyzdžiai" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <div className='card'>
-                <RegistrationForm/>
+              <h2>Kontroliuojama forma `useState()`</h2>
+              <RegistrationForm/>
               </div>
               <div className='card'>
+                <h2>Nekontroliuojama forma `useRef()`</h2>
                 <UncontrolledForm/>
               </div>
               <div className='card'>
+                <h2>Formos validacija</h2>
                 <RegistrationWithValidation/>
               </div>
             </div>
