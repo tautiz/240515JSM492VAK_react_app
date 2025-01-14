@@ -13,6 +13,7 @@ import { ButtonClick, InputChange, FormSubmit, InlineEvents, MultipleEvents } fr
 import DataTable from './components/DataTable';
 import UserDashboard from './components/UserDashboard';
 import Clock from './components/Clock';
+import RegistrationForm, { UncontrolledForm, RegistrationWithValidation } from './components/RegistrationForm';
 
 function App() {
   const users = [
@@ -38,7 +39,20 @@ function App() {
           </aside>
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
 
-            <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
+          <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div className='card'>
+                <RegistrationForm/>
+              </div>
+              <div className='card'>
+                <UncontrolledForm/>
+              </div>
+              <div className='card'>
+                <RegistrationWithValidation/>
+              </div>
+            </div>
+
+          <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <UserDashboard />

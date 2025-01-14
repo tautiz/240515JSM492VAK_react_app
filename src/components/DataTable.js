@@ -83,8 +83,8 @@ const DataTable = ({ data, filterBy = '' }) => {
                     <TableHeader headers={columns} />
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {filteredData.map((item) => (
-                        <TableRow key={item.id} item={item} columns={columns} />
+                    {filteredData.map((item, index) => (
+                        <TableRow key={index} item={item} columns={columns} />
                     ))}
                 </tbody>
             </table>
