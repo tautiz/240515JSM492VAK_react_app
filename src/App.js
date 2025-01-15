@@ -14,6 +14,8 @@ import DataTable from './components/DataTable';
 import UserDashboard from './components/UserDashboard';
 import Clock from './components/Clock';
 import RegistrationForm, { UncontrolledForm, RegistrationWithValidation } from './components/RegistrationForm';
+import DynamicForm from './components/Forms/DynamicForm';
+import NameList from './components/Forms/NameList';
 
 function App() {
   const users = [
@@ -28,39 +30,77 @@ function App() {
 
   ];
 
+  function submitHandler(formData) {
+    // formData bus objektas su visais duomenimis, pvz.:
+    // {
+    //   vardas: "...",
+    //   email: "...",
+    // }
+    console.log("Forma pateikta, gauti duomenys:", formData);
+  }
+
+  const formSchema = [
+    {
+      label: "Jūsų vardas",
+      name: "vardas",
+      id: "vardas-777",
+      className: "text-blue-700",
+      type: "text"
+    },
+    {
+      label: "El. paštas",
+      name: "email",
+      type: "email",
+      placeholder: "įrašykite el. pašto adresą",
+      // ir t.t.
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background-light to-gray-100 dark:from-background-dark dark:to-gray-900 transition-all duration-300">
-      <Header/>
+      <Header />
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <aside className="lg:col-span-3">
+          <aside className="lg:col-span-3 height-full">
             <SonineJuosta />
           </aside>
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
-
-          <Hr text="Formos pavyzdžiai" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <Hr text="Darbas su CSS" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <div className='card'>
-              <h2>Kontroliuojama forma `useState()`</h2>
-              <RegistrationForm/>
+                <NameList />
+              </div>
+            </div>
+            <Hr text="Formos pavyzdžiai" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div className='card'>
+                <h2>Dinamiškai generuojama forma</h2>
+                <DynamicForm
+                  formElements={formSchema}
+                  onSubmit={submitHandler}
+                />
+              </div>
+              <div className='card'>
+                <h2>Kontroliuojama forma `useState()`</h2>
+                <RegistrationForm />
               </div>
               <div className='card'>
                 <h2>Nekontroliuojama forma `useRef()`</h2>
-                <UncontrolledForm/>
+                <UncontrolledForm />
               </div>
               <div className='card'>
                 <h2>Formos validacija</h2>
-                <RegistrationWithValidation/>
+                <RegistrationWithValidation />
               </div>
             </div>
 
-          <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
+            <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <UserDashboard />
               <div className='card'>
-                <Clock/>
+                <Clock />
               </div>
             </div>
 
@@ -93,7 +133,7 @@ function App() {
 
             <AboutMe />
             <Greeting />
-            
+
           </main>
         </div>
       </div>
