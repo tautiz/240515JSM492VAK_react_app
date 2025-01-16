@@ -84,7 +84,7 @@ function App() {
               <div className='card'>
                 <ValidationForm />
               </div>
-              <div className='card flex flex-col h-screen'>
+              <div className='card flex flex-col h-full'>
                 <MouseMoveBackground />
               </div>
 
