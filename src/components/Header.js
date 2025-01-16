@@ -24,13 +24,12 @@ function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           <Meniu data={menuItems} />
-          <button
+          <input type='button'
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             aria-label={darkMode ? 'Įjungti šviesią temą' : 'Įjungti tamsią temą'}
-          >
-            {darkMode ? '🌞' : '🌙'}
-          </button>
+            value={darkMode ? '🌞' : '🌙'}
+          />
         </div>
       </div>
     </header>

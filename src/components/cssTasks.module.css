@@ -1,0 +1,49 @@
+/* Bendri mygtuko stiliai */
+.button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Tekstinių laukų stilizacija */
+.input {
+    padding: 10px;
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.odd {
+    background-color: hsl(59, 94%, 86%);
+    padding: 10px;
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.even {
+    background-color: #80b6ec;
+    padding: 10px;
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Klaidos pranešimai */
+.error {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: -5px;
+}

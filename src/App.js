@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SonineJuosta from './components/SonineJuosta'
 import AboutMe from './components/AboutMe';
 import Greeting from './components/Greeting';
@@ -16,6 +16,10 @@ import Clock from './components/Clock';
 import RegistrationForm, { UncontrolledForm, RegistrationWithValidation } from './components/RegistrationForm';
 import DynamicForm from './components/Forms/DynamicForm';
 import NameList from './components/Forms/NameList';
+import StyledCard1 from './components/Cards/StyledCard1';
+import ThemedCard from './components/Cards/StledCadr2';
+import CountDown from './components/CountDown';
+import { DynamicFields, LoginForm, MouseMoveBackground, ValidationForm } from './components/cssTasks';
 
 function App() {
   const users = [
@@ -56,6 +60,8 @@ function App() {
     }
   ];
 
+  const [theme, setTheme] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background-light to-gray-100 dark:from-background-dark dark:to-gray-900 transition-all duration-300">
       <Header />
@@ -68,9 +74,28 @@ function App() {
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
             <Hr text="Darbas su CSS" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <CountDown />
+              <div className='card'>
+                <LoginForm />
+              </div>
+              <div className='card'>
+                <DynamicFields />
+              </div>
+              <div className='card'>
+                <ValidationForm />
+              </div>
+              <div className='card flex flex-col h-screen'>
+                <MouseMoveBackground />
+              </div>
+
               <div className='card'>
                 <NameList />
               </div>
+              <StyledCard1>
+                Bandomas korteles tekstas
+                <button onClick={() => setTheme(!theme)}>Change</button>
+              </StyledCard1>
+              <ThemedCard theme={theme}> Tekstas ...</ThemedCard>
             </div>
             <Hr text="Formos pavyzdžiai" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
