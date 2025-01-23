@@ -17,13 +17,14 @@ const CountDown = () => {
                 setTimeLeft({ hours, minutes, seconds });
             } else {
                 setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-                clearInterval(interval);
             }
         };
 
         const interval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
         return () => clearInterval(interval);
-    }, []);
+    }, [targetTime]); // Add targetTime as dependency
 
     return (
         <div
@@ -39,7 +40,7 @@ const CountDown = () => {
                         <h3
                             className="countdown-element hours font-manrope font-semibold text-2xl text-white text-center">
                         </h3>
-                        <p className="text-lg fo uppercasent-normal font-normal text-white mt-1 text-center w-full">{timeLeft.hours.toString().padStart(2, '0')}</p>
+                        <p className="text-lg font-normal text-white mt-1 text-center w-full">{timeLeft.hours.toString().padStart(2, '0')}</p>
                     </div>
                 </div>
 
@@ -49,7 +50,7 @@ const CountDown = () => {
                         <h3
                             className="countdown-element minutes font-manrope font-semibold text-2xl text-white text-center">
                         </h3>
-                        <p className="text-lg fo uppercasent-normal text-white mt-1 text-center w-full">{timeLeft.minutes.toString().padStart(2, '0')}</p>
+                        <p className="text-lg font-normal text-white mt-1 text-center w-full">{timeLeft.minutes.toString().padStart(2, '0')}</p>
                     </div>
                 </div>
 
@@ -59,7 +60,7 @@ const CountDown = () => {
                         <h3
                             className="countdown-element seconds font-manrope font-semibold text-2xl text-white text-center">
                         </h3>
-                        <p className="text-lg fo uppercasent-normal text-white mt-1 text-center w-full">{timeLeft.seconds.toString().padStart(2, '0')}</p>
+                        <p className="text-lg font-normal text-white mt-1 text-center w-full">{timeLeft.seconds.toString().padStart(2, '0')}</p>
                     </div>
                 </div>
             </div>

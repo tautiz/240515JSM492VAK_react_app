@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SonineJuosta from './components/SonineJuosta'
 import AboutMe from './components/AboutMe';
 import Greeting from './components/Greeting';
@@ -20,8 +20,16 @@ import StyledCard1 from './components/Cards/StyledCard1';
 import ThemedCard from './components/Cards/StledCadr2';
 import CountDown from './components/CountDown';
 import { DynamicFields, LoginForm, MouseMoveBackground, ValidationForm } from './components/cssTasks';
+import Posts from './components/Posts';
+import Posts2 from './components/Posts2';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { DynamicQuery, SearchFilter, CreatePost, Pagination, PostWithComments } from './components/APIintegracijos';
+import UnifiedComponent from './components/UnifiedComponent';
+import Card from './components/Cards/Card';
 
 function App() {
+  const queryClient = new QueryClient();
+
   const users = [
     { name: "Jonas", age: 25, city: "Vilnius", phone: "123456789", email: "jonas@example.com" },
     { name: "Petras", age: 30, city: "Kaunas", phone: "987654321", email: "petras@example.com" },
@@ -72,6 +80,35 @@ function App() {
             <SonineJuosta />
           </aside>
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
+            <Hr text="API integracija" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <Card span={2}>
+                <UnifiedComponent />
+              </Card>
+              <Card>
+                <DynamicQuery />
+              </Card>
+              <Card>
+                <SearchFilter />
+              </Card>
+              <Card>
+                <CreatePost />
+              </Card>
+              <Card>
+                <Pagination />
+              </Card>
+              <Card>
+                <PostWithComments />
+              </Card>
+              <Card>
+                <Posts />
+              </Card>
+              <Card>
+                <QueryClientProvider client={queryClient}>
+                  <Posts2 />
+                </QueryClientProvider>
+              </Card>
+            </div>
             <Hr text="Darbas su CSS" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <CountDown />
@@ -120,7 +157,7 @@ function App() {
               </div>
             </div>
 
-            <Hr text="Advanced Salygos ir React gyvavymo cilkas useEffect()" />
+            <Hr text="Advanced Salygos ir React gyvavymo ciklas useEffect" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <UserDashboard />

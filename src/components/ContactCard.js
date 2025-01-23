@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import '../styles/contactCard.css';
 
 function ContactCard({ name, phone, email }) {
-
-    const [bukle, keitiBukle] = useState(false);
 
     return (
       <div className="card group hover:scale-105 transition-transform duration-300">
