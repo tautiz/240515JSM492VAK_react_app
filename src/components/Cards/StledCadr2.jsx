@@ -10,8 +10,6 @@ const StyledCard = styled.div`
 `;
 
 function ThemedCard({ theme, children }) {
-    console.log('Theme prop in ThemedCard:', theme); // Log to check theme value
-
     return <StyledCard theme={theme}>{children}</StyledCard>;
 }
 

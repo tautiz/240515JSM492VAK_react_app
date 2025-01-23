@@ -25,12 +25,14 @@ function AboutMe() {
                     placeholder="Iveskite savo varda" 
                     value={vardas} 
                     onChange={(eventas) => keistiVarda(eventas.target.value)}
+                    autoComplete='name'
                     className="input mr-5"
             />
             <input type="text" 
                     placeholder="Iveskite savo Paverde" 
                     value={pavarde} 
                     onChange={(eventas) => keistiPaverde(eventas.target.value)}
+                    autoComplete='surename'
                     className="input"
             />
         </div>

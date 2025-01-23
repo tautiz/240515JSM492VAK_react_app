@@ -26,6 +26,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { DynamicQuery, SearchFilter, CreatePost, Pagination, PostWithComments } from './components/APIintegracijos';
 import UnifiedComponent from './components/UnifiedComponent';
 import Card from './components/Cards/Card';
+import PostsWithAbort from './components/PostsWithAbort';
 
 function App() {
   const queryClient = new QueryClient();
@@ -82,6 +83,9 @@ function App() {
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
             <Hr text="API integracija" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <Card span={2}>
+                <PostsWithAbort/>
+              </Card>
               <Card span={2}>
                 <UnifiedComponent />
               </Card>

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 const CountDown = () => {
-    const targetTime = new Date();
-    targetTime.setHours(22, 0, 0, 0);
+    const targetTime = React.useMemo(() => {
+        const date = new Date();
+        date.setHours(22, 0, 0, 0);
+        return date;
+    }, []);
     const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
     useEffect(() => {
@@ -24,7 +27,7 @@ const CountDown = () => {
         updateCountdown(); // Initial call
 
         return () => clearInterval(interval);
-    }, [targetTime]); // Add targetTime as dependency
+    }, []); // Empty dependency array to run only once
 
     return (
         <div

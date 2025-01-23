@@ -16,6 +16,7 @@ function LoginForm() {
                 <input
                     type="email"
                     placeholder="El. paštas"
+                    autoComplete='email'
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className={styles.input}
@@ -23,6 +24,7 @@ function LoginForm() {
                 <input
                     type="password"
                     placeholder="Slaptažodis"
+                    autoComplete='current-password'
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     className={styles.input}
@@ -108,6 +110,7 @@ function ValidationForm() {
                 <input
                     type="email"
                     placeholder="El. paštas"
+                    autoComplete='email'
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className={styles.input}
@@ -116,6 +119,7 @@ function ValidationForm() {
                 <input
                     type="password"
                     placeholder="Slaptažodis"
+                    autoComplete='current-password'
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     className={styles.input}
