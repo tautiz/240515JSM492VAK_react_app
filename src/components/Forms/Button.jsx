@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = ({ type = 'button', children, onClick = null}) => (
-    <div class="mb-4">
+    <div className="mb-4">
         <button
             type={type}
             onClick={onClick}

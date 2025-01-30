@@ -1,8 +1,9 @@
 function SonineJuosta() {
   const hrTexts = [
+    "API integracija",
     "Darbas su CSS",
     "Formos pavyzdžiai",
-    "Advanced Salygos ir React gyvavimo ciklas useEffect()",
+    "Advanced Salygos ir React gyvavymo ciklas useEffect",
     "Įvykių Pavyzdžiai",
     "Darbas su Komponentais",
     "Intro",

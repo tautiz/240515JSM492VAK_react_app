@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 const CountDown = () => {
-    const targetTime = new Date();
-    targetTime.setHours(22, 0, 0, 0);
+    const targetTime = React.useMemo(() => {
+        const date = new Date();
+        date.setHours(22, 0, 0, 0);
+        return date;
+    }, []);
     const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
     useEffect(() => {
@@ -17,13 +20,14 @@ const CountDown = () => {
                 setTimeLeft({ hours, minutes, seconds });
             } else {
                 setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-                clearInterval(interval);
             }
         };
 
         const interval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
         return () => clearInterval(interval);
-    }, []);
+    }, []); // Empty dependency array to run only once
 
     return (
         <div
@@ -39,7 +43,7 @@ const CountDown = () => {
                         <h3
                             className="countdown-element hours font-manrope font-semibold text-2xl text-white text-center">
                         </h3>
-                        <p className="text-lg fo uppercasent-normal font-normal text-white mt-1 text-center w-full">{timeLeft.hours.toString().padStart(2, '0')}</p>
+                        <p className="text-lg font-normal text-white mt-1 text-center w-full">{timeLeft.hours.toString().padStart(2, '0')}</p>
                     </div>
                 </div>
 
@@ -49,7 +53,7 @@ const CountDown = () => {
                         <h3
                             className="countdown-element minutes font-manrope font-semibold text-2xl text-white text-center">
                         </h3>
-                        <p className="text-lg fo uppercasent-normal text-white mt-1 text-center w-full">{timeLeft.minutes.toString().padStart(2, '0')}</p>
+                        <p className="text-lg font-normal text-white mt-1 text-center w-full">{timeLeft.minutes.toString().padStart(2, '0')}</p>
                     </div>
                 </div>
 
@@ -59,7 +63,7 @@ const CountDown = () => {
                         <h3
                             className="countdown-element seconds font-manrope font-semibold text-2xl text-white text-center">
                         </h3>
-                        <p className="text-lg fo uppercasent-normal text-white mt-1 text-center w-full">{timeLeft.seconds.toString().padStart(2, '0')}</p>
+                        <p className="text-lg font-normal text-white mt-1 text-center w-full">{timeLeft.seconds.toString().padStart(2, '0')}</p>
                     </div>
                 </div>
             </div>

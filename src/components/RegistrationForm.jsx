@@ -28,6 +28,8 @@ function RegistrationForm() {
                 label={'Vardas'}
                 value={formData.name}
                 onChange={handleChange}
+                id="ManoForma-name"
+                autoComplete="name"
             />
             <Input
                 type="text"
@@ -35,6 +37,8 @@ function RegistrationForm() {
                 label={'El. Pastas'}
                 value={formData.email}
                 onChange={handleChange}
+                id="ManoForma-email"
+                autoComplete="email"
             />
             <Input
                 type="password"
@@ -42,6 +46,8 @@ function RegistrationForm() {
                 label={'Slaptazodis'}
                 value={formData.password}
                 onChange={handleChange}
+                id="ManoForma-password"
+                autoComplete="current-password"
             />
             <Button type="submit">Register</Button>
         </Form>
@@ -72,11 +78,11 @@ function UncontrolledForm() {
             </div>
             <div>
                 <label>Email:</label>
-                <input type="email" ref={emailRef}/>
+                <input type="email" ref={emailRef} autoComplete='email'/>
             </div>
             <div>
                 <label>Password:</label>
-                <input type="password" ref={passwordRef}/>
+                <input type="password" ref={passwordRef} autoComplete="current-password"/>
             </div>
             <button type="submit">Register</button>
         </Form>
@@ -96,7 +102,7 @@ function RegistrationWithValidation() {
     const validateALLFields = () => {
         const newErrors = {};
 
-        Object.keys(formData).map((formElement) => { 
+        Object.keys(formData).forEach((formElement) => {
             
             if (formElement === 'email' && !formData[formElement].includes('@')) {
                 newErrors[formElement] = 'Netaisyklingas el. pasto adresas.';
@@ -161,6 +167,7 @@ function RegistrationWithValidation() {
                 value={formData.password}
                 onChange={handleChange}
                 error={errors.password}
+                autoComplete="current-password"
             />
             <Button type="submit">Register</Button>
             {successMessage && <p>{successMessage}</p>}
