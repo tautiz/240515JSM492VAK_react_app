@@ -4,8 +4,9 @@ import Meniu from './Meniu';
 const menuItems = [
   { id: 1, pavadinimas: "Home", nuoroda: "/" },
   { id: 2, pavadinimas: "About", nuoroda: "/about" },
-  { id: 3, pavadinimas: "Trecias", nuoroda: "#" },
-  { id: 4, pavadinimas: "Ketvirtas", nuoroda: "#" },
+  { id: 3, pavadinimas: "Lesons", nuoroda: "pamoka" },
+  { id: 4, pavadinimas: "User 1", nuoroda: "/user/1" },
+  { id: 5, pavadinimas: "User 2", nuoroda: "/user/2" },
 ];
 
 function Header() {
