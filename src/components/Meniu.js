@@ -1,8 +1,16 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Meniu({ data }) {
+
+  const activeStyle = {
+    fontWeight: 'bold',
+    textDecoration: 'underline'
+  };
+
   return (
     <nav className="flex space-x-1">
+      
       {data.map((item) => (
         <a
           key={item.id}
@@ -12,6 +20,8 @@ function Meniu({ data }) {
           {item.pavadinimas}
         </a>
       ))}
+      <NavLink to="/user/1" style={({ isActive }) => isActive ? activeStyle : undefined}>User 1</NavLink>
+      <NavLink to="/user/2" style={({ isActive }) => isActive ? activeStyle : undefined}>User 2</NavLink>
     </nav>
   );
 }

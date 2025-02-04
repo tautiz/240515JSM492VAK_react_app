@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SonineJuosta from './components/SonineJuosta'
-import AboutMe from './components/AboutMe';
-import Greeting from './components/Greeting';
+import AboutMe from './pages/AboutMe';
+import Greeting from './pages/Greeting';
 import ContactCard from './components/ContactCard';
 import Hobbies from './components/Hobbies';
 import Counter from './components/Counter';
@@ -27,6 +27,8 @@ import { DynamicQuery, SearchFilter, CreatePost, Pagination, PostWithComments } 
 import UnifiedComponent from './components/UnifiedComponent';
 import Card from './components/Cards/Card';
 import PostsWithAbort from './components/PostsWithAbort';
+import { Route, Routes } from 'react-router-dom';
+import UserPage from './pages/UsersPage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -81,6 +83,16 @@ function App() {
             <SonineJuosta />
           </aside>
           <main className="lg:col-span-9 space-y-8 animate-fade-in">
+
+            <Routes>
+              {/* Pagrindiniai puslapiai */}
+              <Route path="/" element={<Greeting />} />
+              <Route path="/about" element={<AboutMe />} />
+              {/* <Route path="/contact" element={<Contact />} /> */}
+              {/* Dinaminis maršrutas */}
+              <Route path="/user/:id" element={<UserPage />} />
+            </Routes>
+
             <Hr text="API integracija" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <Card span={2}>
@@ -113,6 +125,7 @@ function App() {
                 </QueryClientProvider>
               </Card>
             </div>
+
             <Hr text="Darbas su CSS" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <CountDown />
@@ -138,6 +151,7 @@ function App() {
               </StyledCard1>
               <ThemedCard theme={theme}> Tekstas ...</ThemedCard>
             </div>
+
             <Hr text="Formos pavyzdžiai" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <div className='card'>
@@ -194,11 +208,6 @@ function App() {
               <div className="card"><Counter /></div>
               <div className="card"><UserList users={users.slice(0, 3)} /></div>
             </div>
-
-            <Hr text="Intro" />
-
-            <AboutMe />
-            <Greeting />
 
           </main>
         </div>

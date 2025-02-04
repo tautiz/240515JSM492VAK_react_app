@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ContactCard from './ContactCard';
+import ContactCard from '../components/ContactCard';
 
 function AboutMe() {
     const [vardas, keistiVarda] = useState('Tautvydas');
