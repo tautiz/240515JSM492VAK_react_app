@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Meniu from './Meniu';
 
 const menuItems = [
-  { id: 1, pavadinimas: "Pirmas", nuoroda: "#" },
-  { id: 2, pavadinimas: "Antras", nuoroda: "#" },
+  { id: 1, pavadinimas: "Home", nuoroda: "/" },
+  { id: 2, pavadinimas: "About", nuoroda: "/about" },
   { id: 3, pavadinimas: "Trecias", nuoroda: "#" },
   { id: 4, pavadinimas: "Ketvirtas", nuoroda: "#" },
 ];
