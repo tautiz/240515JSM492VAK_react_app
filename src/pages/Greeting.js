@@ -99,7 +99,7 @@ function Greeting() {
 
         const fetchReadme = async () => {
             try {
-                const response = await fetch('/REACT_ROUTING.md', {
+                const response = await fetch('/Lesson_data/REACT_ROUTING.md', {
                     signal: controller.signal
                 });
                 if (!response.ok) {

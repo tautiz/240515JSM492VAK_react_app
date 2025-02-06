@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .fade-exit {
+    opacity: 1;
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .fade-slide-enter {
+    transform: translateX(-100%);
+  }
+  .fade-slide-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms;
+  }
+  .fade-slide-exit {
+    transform: translateX(0);
+  }
+  .fade-slide-exit-active {
+    transform: translateX(100%);
+    transition: transform 300ms;
+  }
