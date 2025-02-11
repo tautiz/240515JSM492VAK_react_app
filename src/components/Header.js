@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Meniu from './Meniu';
+import { useTheme } from '../contexts/ThemeContext';
+import UserProfile from './UserProfile';
 
 const menuItems = [
   { id: 1, pavadinimas: "Home", nuoroda: "/" },
@@ -10,26 +12,28 @@ const menuItems = [
 ];
 
 function Header() {
-  const [darkMode, setDarkMode] = useState(false);
+
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    if (darkMode) {
+    if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [darkMode]);
+  }, [theme]);
 
   return (
     <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           <Meniu data={menuItems} />
+          <UserProfile />
           <input type='button'
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label={darkMode ? 'Įjungti šviesią temą' : 'Įjungti tamsią temą'}
-            value={darkMode ? '🌞' : '🌙'}
+            aria-label={theme === 'light' ? 'Įjungti šviesią temą' : 'Įjungti tamsią temą'}
+            value={theme === 'light'  ? '🌞' : '🌙'}
           />
         </div>
       </div>

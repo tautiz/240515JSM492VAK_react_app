@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import ContactCard from '../components/ContactCard';
+import { useTheme } from '../contexts/ThemeContext';
 
 function AboutMe() {
     const [vardas, keistiVarda] = useState('Tautvydas');
     const [pavarde, keistiPaverde] = useState('Dulskis');
+    const { theme, toggleTheme } = useTheme();    
 
     const randomNames = ['Tautvydas', 'Petras', 'Ona', 'Tomas', 'Jurgis'];
     const randomSurenames = ['Dulskis', 'Petraitis', 'Oniene', 'Tomauskas', 'Jurgenas'];
@@ -35,6 +37,7 @@ function AboutMe() {
                     autoComplete='surename'
                     className="input"
             />
+            <button onClick={toggleTheme} className="btn">Toggle theme[{theme}]</button>
         </div>
     );
 }
