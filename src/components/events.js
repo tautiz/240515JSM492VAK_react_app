@@ -5,7 +5,20 @@ function ButtonClick() {
   const [message, setMessage] = useState('');
 
   const handleClick = () => {
-    setMessage('Mygtukas paspaustas!');
+    let x = 10;
+    
+    if (x === 10) {
+      setMessage('X yra 10!');
+      return;
+    } else {
+      setMessage('X yra ne 10!');
+    }
+    
+    console.log('Mygtukas paspaustas!');
+
+    x = 20;
+
+    // setMessage('Mygtukas paspaustas!');
   };
 
   return (
