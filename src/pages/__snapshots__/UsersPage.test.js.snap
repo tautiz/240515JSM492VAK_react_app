@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserPage Component component structure matches snapshot 1`] = `
+<div>
+  <h2>
+    User Page
+  </h2>
+  <p>
+    Rodymas informacijos apie vartotoją su ID: 
+    123
+  </p>
+</div>
+`;
