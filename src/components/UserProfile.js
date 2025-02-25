@@ -9,7 +9,12 @@ function UserProfile() {
   return (
     <div>
       <p>Sveiki, {user.name}!</p>
-      <button onClick={logout}>Atsijungti</button>
+      <button 
+        onClick={logout}
+        className="px-4 py-2 text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+      >
+        Atsijungti
+      </button>
     </div>
   );
 }

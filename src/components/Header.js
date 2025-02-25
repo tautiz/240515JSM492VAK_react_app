@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import Meniu from './Meniu';
 import { useTheme } from '../contexts/ThemeContext';
 import UserProfile from './UserProfile';
+import LoginButton from './auth/LoginButton/LoginButton';
+import { useAuth } from '../contexts/AuthContext';
 
 const menuItems = [
   { id: 1, pavadinimas: "Home", nuoroda: "/" },
@@ -12,8 +14,8 @@ const menuItems = [
 ];
 
 function Header() {
-
   const { theme, toggleTheme } = useTheme();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -28,13 +30,15 @@ function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           <Meniu data={menuItems} />
-          <UserProfile />
-          <input type='button'
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label={theme === 'light' ? 'Įjungti šviesią temą' : 'Įjungti tamsią temą'}
-            value={theme === 'light'  ? '🌞' : '🌙'}
-          />
+          <div className="flex items-center space-x-4">
+            {user ? <UserProfile /> : <LoginButton />}
+            <input type='button'
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label={theme === 'light' ? 'Įjungti šviesią temą' : 'Įjungti tamsią temą'}
+              value={theme === 'light'  ? '🌞' : '🌙'}
+            />
+          </div>
         </div>
       </div>
     </header>
