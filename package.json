@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "^5.64.2",
-    "axios": "^1.7.9",
+    "axios": "^1.12.0",
     "cra-template": "1.2.0",
     "nth-check": "^2.1.1",
     "react": "^18.2.0",
